@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agregar Estudiante</title>
+</head>
+<body>
+    <section class="main">
+        <p class="alert" th:text="${mensaje}"></p>
+        <div class="form-agregar-estudiante">
+            <h1>Formulario para agregar Estudiante</h1>
+            <form action="./validar" method="get">
+                <input type="text" name="name" placeholder="Nombre">
+                <input type="text" name="rut" placeholder="Rut">
+                <input type="text" name="course" placeholder="Curso">
+                <input type="date" name="dateBirth" placeholder="Fecha de Nacimiento">
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
