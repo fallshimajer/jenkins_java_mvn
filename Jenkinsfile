@@ -1,8 +1,10 @@
-pipeline {
+node {
 agent any
     
-    tools {
-        maven 'apache-maven-3.0.1' 
+    stage('mvn tool') {
+    
+        tool name: 'apache-maven-3.0.1', type: 'maven'
+    
     }
  
    stage('SCM Checkout') {
