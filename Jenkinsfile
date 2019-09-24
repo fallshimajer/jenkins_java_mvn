@@ -1,20 +1,25 @@
-node{
-  stage ('Build') {
+node {
  
-    git url: 'https://github.com/fallshimajer/jenkins_java_mvn'
+   stage('Preparation') {  
  
-    withMaven(
-        // Maven installation declared in the Jenkins "Global Tool Configuration"
-        maven: 'maven-3',
-        // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-        // We recommend to define Maven settings.xml globally at the folder level using
-        // navigating to the folder configuration in the section "Pipeline Maven Configuration / Override global Maven configuration"
-        // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
-        mavenSettingsConfig: 'my-maven-settings') {
+      sh 'mvn archetype:generate -B ' +
+      '-DarchetypeGroupId=org.apache.maven.archetypes ' +
+      '-DarchetypeArtifactId=maven-archetype-quickstart ' +
+      '-DgroupId=com.company -DartifactId=myproject'
+      
  
-      // Run the maven build
-      sh "mvn package"
- 
-    } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs & SpotBugs reports...
-  }
+   }
+   stage('Build') {
+        
+      dir ('myproject') {
+            sh 'mvn clean install test'
+      } 
+       
+   }
+   stage('Archive') {
+           dir ('myproject/target') {
+           archive '*.jar'
+      } 
+      
+   }   
 }
