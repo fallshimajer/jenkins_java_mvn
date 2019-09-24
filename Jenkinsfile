@@ -1,16 +1,11 @@
 node {
  
-   stage('Build') {
+   stage('SCM Checkout') {
         
-      dir ('myproject') {
-            sh 'mvn clean install test'
-      } 
+      git 'https://github.com/fallshimajer/jenkins_java_mvn'
        
    }
-   stage('Archive') {
-           dir ('myproject/target') {
-           archive '*.jar'
-      } 
-      
+   stage('Compile-Package') {
+           sh 'mvn package'
    }   
 }
