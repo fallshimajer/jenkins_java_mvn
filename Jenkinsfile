@@ -7,7 +7,7 @@ node {
        
    }
    stage('Compile-Package') {
-       def 'MAVEN3' = tool name: 'maven-3', type: 'maven'
+       def MAVEN3 = tool name: 'maven-3', type: 'maven'
        sh '${MAVEN3}/bin/mvn package'
    }
  stage('deploy'){
