@@ -11,7 +11,7 @@ node {
        sh "${MAVEN3}/bin/mvn package"
    }
  stage('deploy'){
-  deploy adapters: [tomcat9(credentialsId: '17e38e55-45e4-49fc-8144-6c0d901e9f12', path: '', url: 'http://165.227.193.242:8080')], contextPath: 'appweb', war: 'target/*.war'
+  deploy adapters: [tomcat8(credentialsId: '77ff813b-142a-4ca5-93d1-5b2417567212', path: '', url: 'http://165.227.193.242:8080/')], contextPath: '/', war: 'target/*.war'
    }
  }
  
