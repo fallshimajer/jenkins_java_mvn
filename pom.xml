@@ -58,6 +58,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
+		<dependency>
+		    	<groupId>com.hynnet</groupId>
+   		    	<artifactId>jacob</artifactId>
+    			<version>1.18</version>
+		</dependency>
 		
 	</dependencies>
 
